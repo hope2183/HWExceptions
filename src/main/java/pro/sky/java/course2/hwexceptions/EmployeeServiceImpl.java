@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    private Employee[] employees = new Employee[3];
+    private final Employee[] employees = new Employee[3];
     private int size;
 
     @Override
@@ -23,7 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee removeEmployee(String firstName, String lastName) {
+    public String removeEmployee(String firstName, String lastName) {
         Employee removingEmployee = new Employee(firstName, lastName);
         int employeeIndex = getEmployeeIndex(removingEmployee);
         if (employeeIndex == -1) {
@@ -32,12 +32,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee removedEmployee = employees[employeeIndex];
         System.arraycopy(employees, employeeIndex + 1, employees, employeeIndex, size - employeeIndex);
         size--;
-        return null;
+        return "Employee "+removedEmployee+" removed successfully.";
     }
 
     private int getEmployeeIndex(Employee employee) {
         for (int i = 0; i < size; i++) {
-            if (employee.equals(employees[i])) ;
+            if(employee.equals(employees[i])) ;
+
             return i;
         }
         return -1;
