@@ -37,13 +37,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private int getEmployeeIndex(Employee employee) {
         for (int i = 0; i < size; i++) {
-            if(employee.equals(employees[i])) ;
+            if(employee.equals(employees[i])) {
 
             return i;
         }
+
+    }
         return -1;
     }
-
     @Override
     public Employee findEmployee(String firstName, String lastName) {
         Employee findingEmployee = new Employee(firstName, lastName);
