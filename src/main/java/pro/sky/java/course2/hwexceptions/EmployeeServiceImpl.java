@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new EmployeeDoesNotExistException("Employee does not exist!");
         }
         Employee removedEmployee = employees[employeeIndex];
-        System.arraycopy(employees, employeeIndex - 1, employees, employeeIndex, size - employeeIndex);
+        System.arraycopy(employees, employeeIndex, employees, employeeIndex, size - employeeIndex);
         size--;
         return "Employee "+removedEmployee+" removed successfully.";
     }
