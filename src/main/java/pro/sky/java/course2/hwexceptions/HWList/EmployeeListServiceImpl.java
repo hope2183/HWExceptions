@@ -20,20 +20,20 @@ public class EmployeeListServiceImpl implements EmployeeListService{
     }
 
     @Override
-    public boolean removeFromEmployeeList(int index) {
+    public boolean removeFromEmployeeList(String firstName, String lastName) {
 
-        if (index <= employeeList.size()-1) {
-            String deletedEmployee = employeeList.remove(index);
-            return deletedEmployee != null;
+        if (employeeList.contains(firstName + lastName)) {
+            String deletedEmployee =  employeeList.remove(employeeList.indexOf(firstName+lastName));
+            return deletedEmployee!=null;
         }
         throw new EmployeeDoesNotExistException("Employee does not exist!");
     }
 
 
     @Override
-    public boolean findInEmployeeList(int index) {
-        if (index <= employeeList.size() - 1) {
-            String foundEmployee = employeeList.get(index);
+    public boolean findInEmployeeList(String firstName, String lastName) {
+        if (employeeList.contains(firstName + lastName)) {
+            String foundEmployee = employeeList.get(employeeList.indexOf(firstName+lastName));
             return foundEmployee != null;
         }
         throw new EmployeeDoesNotExistException("Employee does not exist!");

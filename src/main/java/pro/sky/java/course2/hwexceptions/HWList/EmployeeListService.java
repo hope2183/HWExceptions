@@ -5,8 +5,8 @@ import java.util.List;
 public interface EmployeeListService {
 
     boolean addToEmployeeList (String firstName, String lastName);
-    boolean removeFromEmployeeList (int index);
-    boolean findInEmployeeList (int index);
+    boolean removeFromEmployeeList (String firstName, String lastName);
+    boolean findInEmployeeList (String firstName, String lastName);
     List<String> getEmployeeList();
 
 }

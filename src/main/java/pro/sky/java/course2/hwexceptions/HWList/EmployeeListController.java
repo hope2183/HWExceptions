@@ -29,14 +29,14 @@ public class EmployeeListController {
     }
 
     @GetMapping("/remove")
-    public boolean removeFromEmployeeList(@RequestParam("index") int index) {
-        return employeeListService.removeFromEmployeeList(index);
+    public boolean removeFromEmployeeList(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+        return employeeListService.removeFromEmployeeList(firstName,lastName);
     }
 
 
     @GetMapping("/find")
-    public boolean findInEmployeeList(@RequestParam("index") int index) {
-        return employeeListService.findInEmployeeList(index);
+    public boolean findInEmployeeList(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
+        return employeeListService.findInEmployeeList(firstName,lastName);
     }
     @GetMapping("/printList")
     public List<String>getEmployeeList(){
