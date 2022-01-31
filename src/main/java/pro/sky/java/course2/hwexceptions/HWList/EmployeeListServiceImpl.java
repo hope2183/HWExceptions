@@ -1,6 +1,7 @@
 package pro.sky.java.course2.hwexceptions.HWList;
 
 import org.springframework.stereotype.Service;
+import pro.sky.java.course2.hwexceptions.EmployeeDoesNotExistException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +21,22 @@ public class EmployeeListServiceImpl implements EmployeeListService{
 
     @Override
     public boolean removeFromEmployeeList(int index) {
-        String deletedEmployee = employeeList.remove(index);
-        return deletedEmployee != null;
+
+        if (index <= employeeList.size()-1) {
+            String deletedEmployee = employeeList.remove(index);
+            return deletedEmployee != null;
+        }
+        throw new EmployeeDoesNotExistException("Employee does not exist!");
     }
+
 
     @Override
     public boolean findInEmployeeList(int index) {
-        String foundEmployee = employeeList.get( index);
-        return foundEmployee!=null;
+        if (index <= employeeList.size() - 1) {
+            String foundEmployee = employeeList.get(index);
+            return foundEmployee != null;
+        }
+        throw new EmployeeDoesNotExistException("Employee does not exist!");
     }
 
     @Override

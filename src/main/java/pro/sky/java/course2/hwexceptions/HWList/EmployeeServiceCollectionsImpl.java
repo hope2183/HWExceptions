@@ -27,6 +27,7 @@ public class EmployeeServiceCollectionsImpl implements EmployeeServiceCollection
 
         if (!employees.remove(removingEmployee)) {
             throw new EmployeeDoesNotExistException("Employee does not exist!");
+
         }
 
         return removingEmployee;
